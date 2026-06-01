@@ -13,6 +13,10 @@ import json
 import re
 import string
 
+import nltk
+nltk.download("stopwords", quiet=True)
+nltk.download("punkt", quiet=True)
+
 import numpy as np
 import streamlit as st
 import plotly.graph_objects as go
