@@ -150,6 +150,8 @@ def train_all_models():
             json.dump(metrics, f, indent=2)
 
     progress.progress(100, text="✅ All models trained and saved!")
+    st.cache_data.clear()
+    st.cache_resource.clear()
     st.success("Models trained successfully! Reloading…")
     st.rerun()
 
@@ -281,6 +283,8 @@ with st.sidebar:
             badge = " 🏆" if name == best_model else ""
             st.markdown(f"**{name}{badge}**")
             st.caption(f"Acc: {m['accuracy']*100:.1f}%  |  F1: {m['f1']*100:.1f}%")
+    else:
+        st.caption("Training in progress…")
 
     st.markdown("---")
     st.caption("Deep Learning · IMDB Dataset · TensorFlow/Keras")
@@ -445,6 +449,10 @@ with tab_metrics:
     st.markdown('<div class="section-title">Training & Evaluation Metrics</div>', unsafe_allow_html=True)
 
     all_metrics = {n: load_metrics(n) for n in ["SimpleRNN", "LSTM", "GRU"]}
+
+    if any(v is None for v in all_metrics.values()):
+        st.warning("Metrics not available yet. Please wait for training to complete and refresh.")
+        st.stop()
 
     summary_rows = []
     for name, m in all_metrics.items():
