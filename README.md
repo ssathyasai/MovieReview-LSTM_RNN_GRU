@@ -49,4 +49,4 @@ streamlit run app.py
 
 ## 👤 Author
 
-**Your Name** — Tekworks
+**S.Sathyasai**
