@@ -1,7 +1,7 @@
-tensorflow-cpu==2.15.1
-streamlit==1.32.0
-plotly==5.18.0
-numpy==1.26.4
-pandas==2.2.1
-scikit-learn==1.4.1
-nltk==3.8.1
+tensorflow-cpu
+streamlit
+plotly
+numpy
+pandas
+scikit-learn
+nltk
